@@ -1,0 +1,7 @@
+spring:
+  application:
+    name: Log-Output
+
+app:
+  log:
+    interval-ms: 5000

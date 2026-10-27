@@ -1,0 +1,6 @@
+.git
+.idea
+*.iml
+README.md
+target/*
+!target/Log-Output-0.0.1-SNAPSHOT.jar
