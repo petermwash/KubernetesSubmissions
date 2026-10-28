@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: todo-app
-          image: pyen/todo-app:1.0.0
+          image: pyen/todo-app:1.0.1
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 9090

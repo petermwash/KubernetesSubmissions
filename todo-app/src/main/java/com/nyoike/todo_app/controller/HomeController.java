@@ -1,0 +1,22 @@
+package com.nyoike.todo_app.controller;
+
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import java.util.HashMap;
+import java.util.Map;
+
+@RestController
+public class HomeController {
+
+    @GetMapping("/")
+    public Map<String, Object> home() {
+        Map<String, Object> response = new HashMap<>();
+
+        response.put("status", "Success");
+        response.put("code", 200);
+        response.put("message", "Todo App server is running!");
+
+        return response;
+    }
+}
