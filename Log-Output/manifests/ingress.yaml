@@ -15,3 +15,10 @@ spec:
                   number: 80
             pathType: Exact
             path: /status
+          - backend:
+              service:
+                name: ping-pong-service
+                port:
+                  number: 1234
+            pathType: Prefix
+            path: /pingpong
