@@ -10,5 +10,8 @@ COPY target/Log-Output-0.0.1-SNAPSHOT.jar app.jar
 # Run as a non-root user
 USER 10001:10001
 
+# expose port
+EXPOSE 8080
+
 # Start the application
 ENTRYPOINT ["java", "-jar", "/app/app.jar"]

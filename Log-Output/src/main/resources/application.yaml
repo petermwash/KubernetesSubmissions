@@ -2,6 +2,9 @@ spring:
   application:
     name: Log-Output
 
+server:
+  port: ${PORT:8080}
+
 app:
   log:
-    interval-ms: 5000
+    interval-ms: ${APP_LOG_INTERVAL_MS:5000}

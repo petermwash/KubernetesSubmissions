@@ -1,6 +1,7 @@
-package com.nyoike.log_output;
+package com.nyoike.log_output.service;
 
 
+import com.nyoike.log_output.model.LogStatus;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
@@ -14,6 +15,13 @@ public class LogOutputService {
 
     public LogOutputService() {
         this.randomString = UUID.randomUUID().toString();
+    }
+
+    public LogStatus getStatus() {
+        return new LogStatus(
+                Instant.now().toString(),
+                randomString
+        );
     }
 
     @Scheduled(fixedRateString = "${app.log.interval-ms}")

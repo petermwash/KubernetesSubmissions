@@ -1,0 +1,17 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: log-output-ingress
+  labels:
+    app: log-output
+spec:
+  rules:
+    - http:
+        paths:
+          - backend:
+              service:
+                name: log-output-service
+                port:
+                  number: 80
+            pathType: Exact
+            path: /status
