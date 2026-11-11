@@ -1,0 +1,49 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: log-output-dep-v2
+  labels:
+    app: log-output-v2
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: log-output-v2
+  template:
+    metadata:
+      labels:
+        app: log-output-v2
+    spec:
+      containers:
+        # Container 1: Writes logs to the shared volume
+        - name: log-writer
+          image: pyen/log-writer:1.0.0
+          imagePullPolicy: IfNotPresent
+          env:
+            - name: LOG_INTERVAL_MS
+              value: "5000"
+            - name: LOG_FILE_PATH
+              value: "/usr/src/app/shared/log.txt"
+          volumeMounts:
+            - mountPath: /usr/src/app/shared
+              name: shared-logs
+
+        # Container 2: Exposes logs through HTTP
+        - name: log-reader
+          image: pyen/log-reader:1.0.0
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8080
+              name: http
+          env:
+            - name: PORT
+              value: "8080"
+            - name: LOG_FILE_PATH
+              value: "/usr/src/app/shared/log.txt"
+          volumeMounts:
+            - mountPath: /usr/src/app/shared
+              name: shared-logs
+              readOnly: true
+      volumes:
+        - name: shared-logs
+          emptyDir: {}

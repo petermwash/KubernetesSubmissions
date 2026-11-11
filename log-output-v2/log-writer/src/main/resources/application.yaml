@@ -1,0 +1,7 @@
+spring:
+  application:
+    name: log-writer
+app:
+  log:
+    interval-ms: ${LOG_INTERVAL_MS:5000}
+    file-path: ${LOG_FILE_PATH:/usr/src/app/shared/log.txt}

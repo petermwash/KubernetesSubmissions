@@ -1,0 +1,8 @@
+spring:
+  application:
+    name: log-reader
+server:
+  port: ${PORT:8080}
+app:
+  log:
+    file-path: ${LOG_FILE_PATH:/usr/src/app/shared/log.txt}
